@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP Programacion 3</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Trabajo Practico - Programacion 3</h1>
+    </header>
+    <main>
+        <nav class="menu-principal">
+            <ul>
+                <li><a href="flexbox.html">Ejercicio 1: Flexbox y JS</a></li>
+                <li><a href="personas.html">Ejercicio 2: DOM y Formulario</a></li>
+                <li><a href="react.html">Ejercicio 3: React Minimo</a></li>
+            </ul>
+        </nav>
+    </main>
+</body>
+</html>
