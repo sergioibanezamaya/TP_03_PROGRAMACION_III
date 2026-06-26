@@ -94,7 +94,10 @@
                     <form onSubmit={manejarEnvio}>
                         <input type="text" name="nombre" value={formulario.nombre} onChange={manejarCambio} placeholder="Nombre" required />
                         <input type="text" name="apellido" value={formulario.apellido} onChange={manejarCambio} placeholder="Apellido" required />
-                        <input type="number" name="edad" value={formulario.edad} onChange={manejarCambio} placeholder="Edad" min="1" required />
+                        
+                        {/* Aca agregamos el onKeyDown para frenar la 'e' en la edad */}
+                        <input type="number" name="edad" value={formulario.edad} onChange={manejarCambio} onKeyDown={bloquearTeclasNumeros} placeholder="Edad" min="1" required />
+                        
                         <input type="number" name="altura" value={formulario.altura} onChange={manejarCambio} onKeyDown={bloquearTeclasNumeros} placeholder="Altura" step="0.01" required />
                         <input type="number" name="peso" value={formulario.peso} onChange={manejarCambio} onKeyDown={bloquearTeclasNumeros} placeholder="Peso" step="0.1" required />
                         <button type="submit">Agregar Persona</button>
