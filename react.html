@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 3 - React</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+    <a href="index.html" class="btn-volver">Volver al inicio</a>
+    <h2>Ejercicio 3: Componentes y Estado con React</h2>
+    
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState } = React;
+
+        function AppPersonas() {
+            const [personas, setPersonas] = useState([]);
+            const [formulario, setFormulario] = useState({
+                nombre: "", apellido: "", edad: "", altura: "", peso: ""
+            });
+
+            const manejarCambio = (e) => {
+                setFormulario({
+                    ...formulario,
+                    [e.target.name]: e.target.value
+                });
+            };
+
+            const manejarEnvio = (e) => {
+                e.preventDefault();
+                const pesoNum = parseFloat(formulario.peso);
+                const alturaNum = parseFloat(formulario.altura);
+                const imc = (pesoNum / (alturaNum * alturaNum)).toFixed(2);
+
+                const nuevaPersona = {
+                    ...formulario,
+                    imc: imc,
+                    id: Date.now() 
+                };
+
+                setPersonas([...personas, nuevaPersona]);
+                setFormulario({ nombre: "", apellido: "", edad: "", altura: "", peso: "" });
+            };
+
+            const eliminarPersona = (id) => {
+                const filtrados = personas.filter(persona => persona.id !== id);
+                setPersonas(filtrados);
+            };
