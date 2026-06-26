@@ -50,3 +50,27 @@
                 const filtrados = personas.filter(persona => persona.id !== id);
                 setPersonas(filtrados);
             };
+            
+            return (
+                <div>
+                    <form onSubmit={manejarEnvio}>
+                        <input type="text" name="nombre" value={formulario.nombre} onChange={manejarCambio} placeholder="Nombre" required />
+                        <input type="text" name="apellido" value={formulario.apellido} onChange={manejarCambio} placeholder="Apellido" required />
+                        <input type="number" name="edad" value={formulario.edad} onChange={manejarCambio} placeholder="Edad" min="1" required />
+                        <input type="number" name="altura" value={formulario.altura} onChange={manejarCambio} placeholder="Altura" step="0.01" required />
+                        <input type="number" name="peso" value={formulario.peso} onChange={manejarCambio} placeholder="Peso" step="0.1" required />
+                        <button type="submit">Agregar Persona</button>
+                    </form>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>Edad</th>
+                                <th>Altura</th>
+                                <th>Peso</th>
+                                <th>IMC</th>
+                                <th>Accion</th>
+                            </tr>
+                        </thead>
