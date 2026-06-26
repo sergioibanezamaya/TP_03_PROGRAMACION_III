@@ -50,7 +50,7 @@
                 const filtrados = personas.filter(persona => persona.id !== id);
                 setPersonas(filtrados);
             };
-            
+
             return (
                 <div>
                     <form onSubmit={manejarEnvio}>
@@ -74,3 +74,30 @@
                                 <th>Accion</th>
                             </tr>
                         </thead>
+                        <tbody>
+                            {personas.map((p) => (
+                                <tr key={p.id}>
+                                    <td>{p.nombre}</td>
+                                    <td>{p.apellido}</td>
+                                    <td>{p.edad}</td>
+                                    <td>{p.altura} m</td>
+                                    <td>{p.peso} kg</td>
+                                    <td>{p.imc}</td>
+                                    <td>
+                                        <button className="btn-eliminar" onClick={() => eliminarPersona(p.id)}>
+                                            Eliminar
+                                        </button>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById("root"));
+        root.render(<AppPersonas />);
+    </script>
+</body>
+</html>
