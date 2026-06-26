@@ -9,9 +9,10 @@
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 </head>
 <body>
-    <div class="navegacion">
+    <nav class="navegacion">
         <a href="index.html" class="btn-volver">Volver al inicio</a>
-    </div>
+    </nav>
+
     <h2>Ejercicio 3: Componentes y Estado con React</h2>
     
     <div id="root"></div>
@@ -32,14 +33,49 @@
                 });
             };
 
+            const bloquearTeclasNumeros = (e) => {
+                if (['e', 'E', '+', '-'].includes(e.key)) {
+                    e.preventDefault();
+                }
+            };
+
+            const validarSoloLetras = (texto) => {
+                const regex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/;
+                return regex.test(texto);
+            };
+
             const manejarEnvio = (e) => {
                 e.preventDefault();
+                
+                const nombreLimpio = formulario.nombre.trim();
+                const apellidoLimpio = formulario.apellido.trim();
+
+                if (!validarSoloLetras(nombreLimpio) || nombreLimpio === "") {
+                    alert("El nombre solo debe contener letras.");
+                    return;
+                }
+
+                if (!validarSoloLetras(apellidoLimpio) || apellidoLimpio === "") {
+                    alert("El apellido solo debe contener letras.");
+                    return;
+                }
+
                 const pesoNum = parseFloat(formulario.peso);
                 const alturaNum = parseFloat(formulario.altura);
+                
+                if (isNaN(alturaNum) || isNaN(pesoNum) || alturaNum <= 0 || pesoNum <= 0) {
+                    alert("El peso y la altura deben ser numeros validos.");
+                    return;
+                }
+
                 const imc = (pesoNum / (alturaNum * alturaNum)).toFixed(2);
 
                 const nuevaPersona = {
-                    ...formulario,
+                    nombre: nombreLimpio,
+                    apellido: apellidoLimpio,
+                    edad: formulario.edad,
+                    altura: alturaNum,
+                    peso: pesoNum,
                     imc: imc,
                     id: Date.now() 
                 };
@@ -59,8 +95,8 @@
                         <input type="text" name="nombre" value={formulario.nombre} onChange={manejarCambio} placeholder="Nombre" required />
                         <input type="text" name="apellido" value={formulario.apellido} onChange={manejarCambio} placeholder="Apellido" required />
                         <input type="number" name="edad" value={formulario.edad} onChange={manejarCambio} placeholder="Edad" min="1" required />
-                        <input type="number" name="altura" value={formulario.altura} onChange={manejarCambio} placeholder="Altura" step="0.01" required />
-                        <input type="number" name="peso" value={formulario.peso} onChange={manejarCambio} placeholder="Peso" step="0.1" required />
+                        <input type="number" name="altura" value={formulario.altura} onChange={manejarCambio} onKeyDown={bloquearTeclasNumeros} placeholder="Altura" step="0.01" required />
+                        <input type="number" name="peso" value={formulario.peso} onChange={manejarCambio} onKeyDown={bloquearTeclasNumeros} placeholder="Peso" step="0.1" required />
                         <button type="submit">Agregar Persona</button>
                     </form>
 
