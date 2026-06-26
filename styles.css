@@ -1,0 +1,102 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f9;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Estilos menu principal */
+.menu-principal ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.menu-principal a, .btn-volver {
+    text-decoration: none;
+    background-color: #0056b3;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.btn-volver {
+    display: inline-block;
+    margin-bottom: 20px;
+    background-color: #555;
+}
+
+/* Flexbox Ejercicio 1 */
+.contenedor-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.tarjeta {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    width: 200px;
+    text-align: center;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+}
+
+.controles {
+    text-align: center;
+    margin-top: 20px;
+}
+
+button {
+    padding: 8px 15px;
+    cursor: pointer;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+
+/* Tablas y formularios */
+form {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+    border: 1px solid #ccc;
+}
+
+input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.btn-eliminar {
+    background-color: #dc3545;
+}
